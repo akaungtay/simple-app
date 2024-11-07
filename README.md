@@ -48,3 +48,14 @@ docker network ls
 
 ```
 
+### Check Redis Server
+```
+nc -v localhost 6379
+
+PING
+
+SET mykey "Hello, Redis!"
+
+GET mykey
+
+```
