@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 # cache = redis.Redis(host='redis', port=6379)
-cache = redis.Redis(host='127.0.0.1', port=6379)
+cache = redis.Redis(host=os.environ.get('REDISIP', 'redis'), port=6379)
 
 def get_hit_count():
     retries = 5
