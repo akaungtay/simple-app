@@ -1,5 +1,8 @@
 services:
   web:
+    environment:
+      - REDISIP=redis
+      - PORT=8050
     build: .
     ports:
       - "8000:8050"
