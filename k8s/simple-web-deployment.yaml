@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-deployment
+  namespace: simple-web  # Specify namespace here
+spec:
+  replicas: 1  # Adjust replicas as needed
+  selector:
+    matchLabels:
+      app: web-redis
+  template:
+    metadata:
+      labels:
+        app: web-redis
+    spec:
+      containers:
+        - name: web
+          image: akaungtay/simple-web:v1.0  # web image in docker hub
+          env:
+            - name: REDISIP
+              value: "localhost"  # Redis hostname, as both containers are in the same Pod
+            - name: PORT
+              value: "8050"       # Port the web app listens on
+          ports:
+            - containerPort: 8050  # Port the web app listens on
+        - name: redis
+          image: redis:alpine   # Official Redis image from docker hub
+          ports:
+            - containerPort: 6379  # Redis default port

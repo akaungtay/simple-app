@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-web-service  # Name of the Service
+  namespace: simple-web  # Namespace
+spec:
+  selector:
+    app: web-redis  # Must match the label defined in the Deployment template
+  ports:
+    - protocol: TCP
+      port: 80          # External port for the Service
+      targetPort: 8050  # Port on the web container that receives traffic
+  type: ClusterIP     # Type of Service (other options: ClusterIP, NodePort)

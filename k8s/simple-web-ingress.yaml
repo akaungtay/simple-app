@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-web-ingress
+  namespace: simple-web  # Namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Required to properly route paths
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: simple-web.118.189.162.99.nip.io # Replace with your domain name
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: simple-web-service  # Name of the Service
+                port:
+                  number: 80             # Port on the Service to forward requests to
+status:
+  loadBalancer:
+    ingress:
+      - ip: 192.168.3.2
