@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: simple-web.118.189.162.99.nip.io # Replace with your domain name
+    - host: simple-web.example.com # Replace with your domain name
       http:
         paths:
           - path: /
