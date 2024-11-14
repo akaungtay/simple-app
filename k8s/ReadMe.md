@@ -30,7 +30,7 @@ metadata:
 		- name: my-container 
 		- image: <harbor-registry-ip>:<port>/my-project/my-image:latest 
 		imagePullSecrets: 
-		- name: harbor-secret
+		- name: <harbor-secret-name>
 ```
 
 3. Verify Image Pulling
